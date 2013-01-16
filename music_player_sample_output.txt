@@ -1,0 +1,57 @@
+> music_player:test(in_order).
+<<START>>
+Initializing music player with mode in_order and songs
+[{song,"Beth Orton - Carmella",4},
+ {song,"Sia - Breathe Me",6},
+ {song,"Madvillain - Great Day",5},
+ {song,"Bonobo - Pick Up",3},
+ {song,"Radiohead - Skttrbrain",7},
+ {song,"Fujiya & Miyagi - Ankle Injuries",2}]
+<<LIST>>
+Listing songs: [{song,"Beth Orton - Carmella",4},
+                {song,"Sia - Breathe Me",6},
+                {song,"Madvillain - Great Day",5},
+                {song,"Bonobo - Pick Up",3},
+                {song,"Radiohead - Skttrbrain",7},
+                {song,"Fujiya & Miyagi - Ankle Injuries",2}]
+<<PLAY>>
+Playing {song,"Beth Orton - Carmella",4}
+Setting timer with delay of 4000 for {song,"Beth Orton - Carmella",4}
+<<PAUSE>>
+Pausing {song,"Beth Orton - Carmella",4}
+<<PAUSE>>
+Unpausing {song,"Beth Orton - Carmella",4}
+Setting timer with delay of 2498 for {song,"Beth Orton - Carmella",4}
+<<PAUSE>>
+Pausing {song,"Beth Orton - Carmella",4}
+<<PAUSE>>
+Unpausing {song,"Beth Orton - Carmella",4}
+Setting timer with delay of 2397 for {song,"Beth Orton - Carmella",4}
+Playing {song,"Sia - Breathe Me",6}
+Setting timer with delay of 6000 for {song,"Sia - Breathe Me",6}
+<<PAUSE>>
+Pausing {song,"Sia - Breathe Me",6}
+<<NEXT>>
+Skipping to {song,"Madvillain - Great Day",5}
+<<PLAY>>
+Playing {song,"Madvillain - Great Day",5}
+Setting timer with delay of 5000 for {song,"Madvillain - Great Day",5}
+<<PAUSE>>
+Pausing {song,"Madvillain - Great Day",5}
+<<PREV>>
+Rewinding {song,"Madvillain - Great Day",5}
+<<PLAY>>
+Playing {song,"Madvillain - Great Day",5}
+Setting timer with delay of 5000 for {song,"Madvillain - Great Day",5}
+<<PREV>>
+Playing {song,"Sia - Breathe Me",6}
+Setting timer with delay of 6000 for {song,"Sia - Breathe Me",6}
+<<STOP>>
+Stopping {song,"Sia - Breathe Me",6}
+<<PLAY>>
+Playing {song,"Sia - Breathe Me",6}
+Setting timer with delay of 6000 for {song,"Sia - Breathe Me",6}
+Playing {song,"Madvillain - Great Day",5}
+Setting timer with delay of 5000 for {song,"Madvillain - Great Day",5}
+<<STOP>>
+ok
