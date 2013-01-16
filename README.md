@@ -1,3 +1,18 @@
+# Overview
+
+1. Plain JavaScript, trying out exercises and mini projects
+2. Node.js basics, simple input/output, file reading/writing
+3. HTML, CSS, basic jQuery, chrome dev tools
+4. Making a simple client/server app with HTML + CSS + jQuery on front-end, Node.js on back-end. Get solid understanding of HTTP (I'll help a bunch here), JSON, more chrome dev tools.
+5. Quick detour into websockets (revise previous app to use websockets).
+7. Knockout.js -- learn basics, then iterate on sample app with Knockout.js
+8. CoffeeScript -- by this time, should see the advantages and have a good enough mental model of JS to get it right away
+9. Git! (and maybe more terminal tools)
+
+# Todo List
+
+This currently covers steps 2 to 5. Probably we'll do the rest in it too.
+
 ## Todo List, Phase 1
 
 **Objective:** Make a simple to-do list that you can use to keep track of all the things that need doing!
