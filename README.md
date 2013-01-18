@@ -47,8 +47,8 @@ Oh no, my to-dos keep getting deleted every time we run the program! That's not 
 * Should be able to start and stop the program as much as you want, with the items saved.
 
 **Technical hints:**
-* You'll want to save the todo list to a file whenever anything changes, and load the contents of the file when the program loads up.
-* You can "serialize" the todo list to JSON format when saving, and the "deserialize" it when loading the file.
+* You'll want to save the todo list to a file whenever anything changes, and load the contents of the file when the program loads up (you'll need to use `fs.readFile` and `fs.writeFile` -- don't forget to require "fs" http://nodejs.org/api/fs.html).
+* You can "serialize" the todo list to JSON format when saving, and the "deserialize" it when loading the file (you'll need to use `JSON.stringify` and `JSON.parse`).
 
 
 ## Intermission
