@@ -59,7 +59,7 @@ If you'd like more practice before continuing, try out these two problems:
    * Starts at time = 0ms
    * Can be started, paused, and reset. Each operation prints out the accumulated time in milliseconds when executed.
    * Pause/resume should keep the current time in milliseconds intact.
-   * While running, says "mark" every 5 seconds (0s, 5s, 10s, 15s).
+   * While running, prints out "mark!" every 5 seconds (0s, 5s, 10s, 15s).
    * You'll need to use `var tref = setTimeout(myFunction, millisecondsToWait);` and `clearTimeout(tref)`.
 
 2. [Music player problem](https://github.com/kenpratt/learning-js-and-node/blob/master/music_player.md) ([sample output](https://github.com/kenpratt/learning-js-and-node/blob/master/music_player_sample_output.txt)). You'll need to use `setTimeout` and `clearTimeout`, as well as `Math.random()` if you choose to implement shuffle mode. Try to think of as many "corner cases" as you can and test them to see if they work.
