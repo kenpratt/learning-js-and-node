@@ -53,7 +53,16 @@ Oh no, my to-dos keep getting deleted every time we run the program! That's not 
 
 ## Intermission
 
-If you'd like more practice before continuing, try out the music player problem. You'll need to use "setTimeout" to set a timer to change the song, and "clearTimeout" if buttons are pressed while the song is playing to cancel the currently scheduled song switch. You'll need "Math.random()" if you choose to implement shuffle mode. Try to think of as many "corner cases" as you can and test them to see if they work.
+If you'd like more practice before continuing, try out these two problems:
+
+1. Implement a stopwatch program that has the following features:
+   * Starts at time = 0ms
+   * Can be started, paused, and reset. Each operation prints out the accumulated time in milliseconds when executed.
+   * Pause/resume should keep the current time in milliseconds intact.
+   * While running, says "mark" every 5 seconds (0s, 5s, 10s, 15s).
+   * You'll need to use `var tref = setTimeout(myFunction, millisecondsToWait);` and `clearTimeout(tref)`.
+
+2. [Music player problem](https://github.com/kenpratt/learning-js-and-node/blob/master/music_player.md) ([sample output](https://github.com/kenpratt/learning-js-and-node/blob/master/music_player_sample_output.txt)). You'll need to use `setTimeout` and `clearTimeout`, as well as `Math.random()` if you choose to implement shuffle mode. Try to think of as many "corner cases" as you can and test them to see if they work.
 
 
 ## Reading time!
@@ -156,3 +165,19 @@ Buuut what I really want is a multi-user todo list! And I want it to be speedy!
 
 **Requirements:**
 * Should be able to have multiple browser tabs doing stuff in the todo list and changes showing up in all the tabs.
+
+
+## Time for some fun!
+
+**Objective:** Create a two player Chess game, where each player connects from a different computer.
+
+**Requirements:**
+* Once two players have joined, black/white is randomly assigned and the game begins.
+* Players should be able to set their name in the browser "query string": http://localhost:8000/chess.html?Ken
+* Regular chess movement rules apply (castles optional).
+* Move is broadcast to other player in real time.
+* (Optional) Server stores either list of moves or board state, so if a player refreshes their browser, they can keep playing.
+* (Optional) Support for more than one game going on at the same time.
+
+**Technical hints:**
+* Use everything you've learned so far, including websockets to talk to the server.
