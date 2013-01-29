@@ -90,20 +90,20 @@ POST /todos (create a new todo item)
   Result: 200 OK, blank
   Try it: $ curl -X POST -d "text=Hello" http://localhost:8000/todos
 
-POST /todos/<id>/complete (mark a todo item as done)
-  Params: (none)
+POST /todos/complete (mark a todo item as done)
+  Params: id => todo id
   Result: 200 OK, blank
-  Try it: $ curl -X POST http://localhost:8000/todos/2/complete
+  Try it: $ curl -X POST -d "id=2" http://localhost:8000/todos/complete
 
-POST /todos/<id>/uncomplete (mark a todo item as not done)
-  Params: (none)
+POST /todos/uncomplete (mark a todo item as not done)
+  Params: id => todo id
   Result: 200 OK, blank
-  Try it: $ curl -X POST http://localhost:8000/todos/2/uncomplete
+  Try it: $ curl -X POST -d "id=2" http://localhost:8000/todos/uncomplete
 
-POST /todos/<id>/delete (delete a todo item)
-  Params: (none)
+POST /todos/delete (delete a todo item)
+  Params: id => todo id
   Result: 200 OK, blank
-  Try it: $ curl -X POST http://localhost:8000/todos/2/delete
+  Try it: $ curl -X POST -d "id=2" http://localhost:8000/todos/delete
 ```
 
 **Technical hints:**
@@ -116,16 +116,49 @@ POST /todos/<id>/delete (delete a todo item)
 
 Okay, now you know enough to be dangerous on the server side. But that's only half of the equation. Most users don't want to use "curl" or weird command-line REPLs. They like buttons to click on!
 
-So go through the CodeAcademy Web track: http://www.codecademy.com/tracks/web
-
-And then the jQuery track: http://www.codecademy.com/tracks/jquery
-
-And then some of the projects if you feel like it: http://www.codecademy.com/tracks/projects
+So go through the CodeAcademy Web track: http://www.codecademy.com/tracks/web. Try out some HTML and CSS. No jQuery or other client-side JavaScript needed yet.
 
 
 ## Todo List, Phase 4
 
-**Objective:** Create an HTML app to-do list that can do the same sort of stuff as our previous todo list, but all with UI interaction.
+*Important:* Make a copy of your todo list from Phase 3, as you'll need it later for Phase 5. Phase 4 is kind of on off-shoot (you'll see what I mean).
+
+**Objective:** Create a todo list website! Your
+
+**Requirements:**
+* Should have a list of todo items
+* Should have a text box & button to add a new todo
+* Should have a button next to each incomplete todo item to mark that items as complete ("done")
+* Should have a button next to each complete todo item to mark that items as incomplete ("not done")
+* Should have a button next to each todo item to delete that item
+* The list should be sorted with the newest stuff on top, oldest at the bottom, but in two sections: not done first, and then done second (so oldest not done item is just above newest done item)
+* The done items should be crossed out and lighter grey
+
+**Technical hints:**
+* Re-use the same server as Phase 3.
+* To start, try making an HTML page that has a text box and a button inside a form, that sends a `POST /todos` request to your server, which will create the todo item. It should work without any changes to your server code.
+* After you have that working, move the HTML page into the server so that when you visit http://localhost:8000/todos, you see that page (you'll need to replace your `GET /todos` code to return that HTML, and change the content-type to `text/html`.
+* Now that you have your web server serving up an HTML page, have it dynamically generate that page with a a list of todo items in it. You'll probably want to use [embedded JavaScript templates](https://github.com/visionmedia/ejs), as it'll be easier than building an HTML string by hand. But feel free to build an HTML string by hand if you find that simpler. If want help setting this up, just ask/grab me.
+* Not try to add the other functionality, which should hit the other POST URLs.
+* For the POST requests, send a 302 with the `Location` header set to `/todos`. This will cause the browser to do a send a `GET /todos` request and render the page.
+
+You should now have a fully-functioning todo-list, that has a fancy UI and saves the items to a file on the server. Congratulations, you've just created your first full web application, that you could post online for the whole wide world to use!
+
+If you haven't done so already, spruce up the page a bit with some CSS to make it look presentable.
+
+
+## We want rich clients!
+
+Okay, so now you have an "old school" web application where there isn't any JavaScript on the client side, and the server is generating all the pages. This is how most of the web works (Wikipdeia, blogs, news sites, Rails applications like Leanpub, etc). However, we want to build a fancy "rich client" application, like Gmail, so we'll be doing things a bit differently. Instead of reloading the page every time the user clicks a button, we'll use JavaScript to update the page. This will make the app feel much faster and fancier. However, we'll need to know a bit of jQuery first (technically, you don't need jQuery to do it, but it makes it about a hundred times easier).
+
+Now do the jQuery track: http://www.codecademy.com/tracks/jquery
+
+And then some of the projects if you feel like it: http://www.codecademy.com/tracks/projects
+
+
+## Todo List, Phase 5
+
+**Objective:** Create an HTML app to-do list that can do the same sort of stuff as our previous todo list, but building and updating the page dynamically on the client instead of on the server.
 
 **Requirements:**
 * Should have a list of todo items
@@ -137,15 +170,19 @@ And then some of the projects if you feel like it: http://www.codecademy.com/tra
 * The done items should be crossed out and lighter grey
 
 **Technical hints:**
+* Start with the HTML and CSS from Phase 4. You won't need a server for this phase.
+* Add jQuery functions so that whenever a button is clicked, the HTML is updated as needed. Adding a new todo item should append it to the list of uncompleted todos, completing a todo should move it to the end of the completed list, uncompleting should move it to the end of the uncompleted list, and deleting should remove it.
 * http://w3schools.com/tags/, http://w3schools.com/cssref/, http://w3schools.com/jsref/, and http://docs.jquery.com/ are your friends.
 * The Chrome developer tools are awesome. Look up some tutorials on using them, or grab me and I can show you the ropes.
 
+Okay, so now we have a fancy-dancy UI. But we lost the whole server interaction part, which was kind of the whole point!!
 
-## Todo List, Phase 5
+
+## Todo List, Phase 6
 
 Now it's time to hook your fancy new client UI up to your Node.js todo list HTTP server!
 
-**Objective:** Combine "Todo List, Phase 3" and "Todo List, Phase 4" to have the HTTP server storing the TODO items for you.
+**Objective:** Combine "Todo List, Phase 3" and "Todo List, Phase 5" to have the HTTP server storing the TODO items for you. You won't need the code from Phase 4.
 
 **Requirements:**
 * Should be able to add, complete, uncomplete, and delete todo items and have the changes updated the server.
@@ -157,7 +194,7 @@ Now it's time to hook your fancy new client UI up to your Node.js todo list HTTP
 * Take a look at the network tab in Chrome dev tools to see what's going on.
 
 
-## Todo List, Phase 6
+## Todo List, Phase 7
 
 Buuut what I really want is a multi-user todo list! And I want it to be speedy!
 
