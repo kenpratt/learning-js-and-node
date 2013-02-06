@@ -220,7 +220,7 @@ Okay, so now we have a fancy-dancy UI. But we lost the whole server interaction 
 
 Now it's time to hook your fancy new client UI up to your Node.js todo list HTTP server!
 
-**Objective:** Combine "Todo List, Phase 3" and "Todo List, Phase 6" to have the HTTP server storing the TODO items for you. You won't need the code from Phase 4 or Phase 5.
+**Objective:** Combine "Todo List, Phase 3", "Todo List, Phase 5", and "Todo List, Phase 6" to have the HTTP server storing the TODO items for you. Use Express, like in Phase 5, but have it return JSON instead of HTML, like in Phase 3.
 
 **Requirements:**
 * Should be able to add, complete, uncomplete, and delete todo items and have the changes updated the server.
@@ -236,23 +236,44 @@ Now it's time to hook your fancy new client UI up to your Node.js todo list HTTP
 
 Buuut what I really want is a multi-user todo list! And I want it to be speedy!
 
+The problem with HTTP is that the client is in the driver seat, and the server can't do anything unless the client asks it to. But sometimes, you really really want to tell something to the client without it asking. Like for example, if you're looking right at your shopping list and I just bought milk, and I want to deleted the "Buy Milk" todo item and have it update on your screen post-haste. The easiest way to solve this is by "polling", aka having the client ask the server every few seconds if there has been any updates. But it's chatty and a total pain. The preferred solution these days is to use "web sockets", which are basically just a TCP socket, and don't use much of HTTP. They give you a connection between the client and the server where messages can be sent in either direction, and don't even necessarily need to be in request/response pairs.
+
 **Objective:** Switch from an HTTP API to using websockets, and let a bunch of people work on the same todo list at the same time.
 
 **Requirements:**
-* Should be able to have multiple browser tabs doing stuff in the todo list and changes showing up in all the tabs.
+* Should be able to have multiple browser tabs doing stuff in the todo list and changes showing up in all the tabs simultaneously.
+
+**Technical hints:**
+* Keep your client code from Phase 7 and your todos.js from Phase 7, but throw out the web server code and start from scratch.
+* Create a new server that uses web sockets. Start with https://github.com/kenpratt/learning-js-and-node/blob/master/example_web_socket_server/.
+* Take a look at the network tab in Chrome dev tools to see what's going on.
+* You'll probably want to have all your messages be objects with `type` set to something. For example `{type: "todos", todos: [...]}`, or `{type: "complete_todo", id: 37}`.
+* When a client connects, send the list of todos in a JSON message from the server to the client.
+* When a todo is added, completed, uncompleted, or removed, send a message from the client to the server.
+* Whenever a todo changes on the server, send a message to all connected clients with the updated information for that todo (or whether it's been deleted). Clients should update their interface as needed.
 
 
 ## Time for some fun!
 
-**Objective:** Create a two player Chess game, where each player connects from a different computer.
+**Objective:** Create a multi-player Chess game.
 
 **Requirements:**
+* Players should be able to join the game by visiting a URL, setting their name in the browser "query string": http://localhost:3000/chess?name=Ken
 * Once two players have joined, black/white is randomly assigned and the game begins.
-* Players should be able to set their name in the browser "query string": http://localhost:8000/chess.html?Ken
 * Regular chess movement rules apply (castles optional).
-* Move is broadcast to other player in real time.
+* Moves are broadcast to other player in real time.
 * (Optional) Server stores either list of moves or board state, so if a player refreshes their browser, they can keep playing.
 * (Optional) Support for more than one game going on at the same time.
 
 **Technical hints:**
-* Use everything you've learned so far, including websockets to talk to the server.
+* Use everything you've learned so far, including websockets to talk to the server, HTML & CSS to show the board and pieces, and jQuery to handle clicking around on the
+
+
+## Todo List, Phase 9
+
+Knockout.js
+
+
+## Todo List, Phase 10
+
+CoffeeScript
