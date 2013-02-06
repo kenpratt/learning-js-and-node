@@ -253,27 +253,53 @@ The problem with HTTP is that the client is in the driver seat, and the server c
 * Whenever a todo changes on the server, send a message to all connected clients with the updated information for that todo (or whether it's been deleted). Clients should update their interface as needed.
 
 
+## Keeping the UI in sync is a pain. Knockout to the rescue!
+
+Okay, so you may have noticed by now, in can be a bit difficult to keep the various parts of the UI in sync when things change. The todo app is pretty small, so this probably wasn't overly hard, but on a big project where things are shown in many places in the UI, it can get buggy. Knockout is a framework for "wiring up" UIs to JavaScript objects in such a way that you don't have to write much code to keep then in sync. Go through the tutorials at http://learn.knockoutjs.com/ to learn the basics.
+
+
+## Todo List, Phase 9
+
+Now that you're familiar with Knockout, we'll revise the todo list client to use it.
+
+**Objective:** Rewrite the UI code for the todo list using Knockout. You should need very few jQuery functions.
+
+**Requirements:**
+* Same as Phase 8
+
+**Technical hints:**
+* You'll probably want two Observable Arrays -- one for incomplete tasks, and one for completed tasks. Each task will be an object, but it's properties should be Observables.
+
+
+## Let's make some Coffee!
+
+Okay, by now you've realized that JavaScript can be a bit of a pain sometimes. Scope bugs aplenty, and just plain old verbose. CoffeeScript is a "little language that compiles into JavaScript".
+
+Check it out at http://coffeescript.org/, and try it out in the "Try CoffeeScript" section. In particular, check out http://coffeescript.org/#fat_arrow
+
+
+## Todo List, Phase 10
+
+Rewrite your todo list in CoffeeScript (both client and server). You can probably just use http://js2coffee.org/ and then clean up the output, but take a look at the differences, and clean up some places by switching "bind" to fat arrows, etc.
+
+
 ## Time for some fun!
 
 **Objective:** Create a multi-player Chess game.
 
 **Requirements:**
-* Players should be able to join the game by visiting a URL, setting their name in the browser "query string": http://localhost:3000/chess?name=Ken
+* Players should be able to join the game by visiting a URL, setting their name in the query string. For example: http://localhost:3000/chess?name=Ken
 * Once two players have joined, black/white is randomly assigned and the game begins.
 * Regular chess movement rules apply (castles optional).
-* Moves are broadcast to other player in real time.
-* (Optional) Server stores either list of moves or board state, so if a player refreshes their browser, they can keep playing.
-* (Optional) Support for more than one game going on at the same time.
+* Moves are broadcast to other player in real time, so their board is kept up to date.
+* (Optional) Server stores either list of moves or the current board state, so that if a player refreshes their browser, they can keep playing.
+* (Optional) Support for more than one game going on at the same time (with a "lobby" to create/join games).
 
 **Technical hints:**
-* Use everything you've learned so far, including websockets to talk to the server, HTML & CSS to show the board and pieces, and jQuery to handle clicking around on the
-
-
-## Todo List, Phase 9
-
-Knockout.js
-
-
-## Todo List, Phase 10
-
-CoffeeScript
+* Use everything you've learned so far, including websockets to talk to the server, HTML & CSS to show the board and pieces, and jQuery to handle clicking around on the board
+* Each square on the board will be an absolutely-positioned div, and should use HTML 5 "data" attributes to store it's position (data-x, data-y).
+* Each piece will be an absolutely-positioned div.
+* Use jQuery UI draggable and droppable to provide drag & drop support for the pieces on the board. Pieces will be draggable, board squares will be droppable. When a piece is hovered over a board square and/or dropped on a board square, you should validate that it is a legal move.
+* When you drop a piece on a square, and the move is valid, send a message to the server requesting that move. The server should double-check that the move is valid (you should create a function to check valid moves that you use on both the client and server), and then if valid, record the move and broadcast the change to the clients.
+* When a client receives a move, it should update the position of the affected piece(s).
+* (Optional) Add a CSS 3 transition to animate the opponent's moves.
