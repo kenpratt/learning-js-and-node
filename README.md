@@ -121,7 +121,7 @@ So go through the CodeAcademy Web track: http://www.codecademy.com/tracks/web. T
 
 ## Todo List, Phase 4
 
-*Important:* Make a copy of your todo list from Phase 3, as you'll need it later for Phase 5. Phase 4 is kind of on off-shoot (you'll see what I mean).
+*Important:* Make a copy of your todo list from Phase 3, as you'll need it later for Phase 6. Phase 4 is kind of on off-shoot (you'll see what I mean).
 
 **Objective:** Create a todo list website! Your
 
@@ -147,16 +147,54 @@ You should now have a fully-functioning todo-list, that has a fancy UI and saves
 If you haven't done so already, spruce up the page a bit with some CSS to make it look presentable.
 
 
+## Todo List, Phase 5
+
+Yay, we've made a manual web server! But could it really always be that hard to serve stuff up??
+
+**Objective:** Re-write the server side of Phase 4 using the Express library, to trim down the code. Express is a "web application framework" that makes it much simpler to write web servers than using the Node.js HTTP Server API.
+
+**Requirements:**
+* Should be almost the same as Phase 4, but use Express.js for the routing, POST data parsing, redirecting, and static file serving.
+* One minor change: To clean up the POST requests, change the forms with hidden fields for the IDs to put the ID in the url instead. It is very common in web APIs to use the id as part of the URL -- it makes things simpler to understand and in some cases, simpler to implement, than using hidden form parameters.
+
+```
+POST /todos/37/complete (mark a todo item as done)
+  Params: none
+  Result: 200 OK, blank
+  Try it: $ curl -X POST -d "id=2" http://localhost:8000/todos/37/complete
+
+POST /todos/37/uncomplete (mark a todo item as not done)
+  Params: none
+  Result: 200 OK, blank
+  Try it: $ curl -X POST -d "id=2" http://localhost:8000/todos/37/uncomplete
+
+POST /todos/37/delete (delete a todo item)
+  Params: none
+  Result: 200 OK, blank
+  Try it: $ curl -X POST -d "id=2" http://localhost:8000/todos/37/delete
+```
+
+**Technical hints:**
+* Use your todos.js from Phase 4, but start from scratch on the web server. To get started, `npm install express`, and try out https://github.com/visionmedia/express/blob/master/examples/hello-world/index.js, replacing `require('../../')` with `require('express')`.
+* For GET requests, you can use `app.get('/', function(req, res) { res.send('Hello World'); });`. (http://expressjs.com/api.html#app.VERB)
+* For POST requests, you can use `app.post('/', function(req, res) { res.send(""); });`. (http://expressjs.com/api.html#app.VERB)
+* To get the POST parameters, you can add `app.use(express.bodyParser());` and then they will be available as an object in `req.body`. (http://expressjs.com/api.html#req.body)
+* To send a redirect, you can use `res.redirect('/foo/bar');`. (http://expressjs.com/api.html#res.redirect)
+* To serve up `stylesheet.css` or any other "static" files, you can use `app.use(express.static('public'))`. You'll need to move any files you want served into a sub-directory. (http://expressjs.com/api.html#directory)
+
+Alright, now compare your code to Phase 4. It should be much shorter and more understandable. Libraries often exist to help out with things you want to do, so you don't have to create quite so much from scratch. If only I'd told you about this one in the first place ;)
+
+
 ## We want rich clients!
 
-Okay, so now you have an "old school" web application where there isn't any JavaScript on the client side, and the server is generating all the pages. This is how most of the web works (Wikipdeia, blogs, news sites, Rails applications like Leanpub, etc). However, we want to build a fancy "rich client" application, like Gmail, so we'll be doing things a bit differently. Instead of reloading the page every time the user clicks a button, we'll use JavaScript to update the page. This will make the app feel much faster and fancier. However, we'll need to know a bit of jQuery first (technically, you don't need jQuery to do it, but it makes it about a hundred times easier).
+Okay, so now you have an "old school" web application where there isn't any JavaScript on the client side, and the server is generating all the pages. This is how most of the web works (Wikipdeia, blogs, news sites, Rails applications like Leanpub, etc). However, we want to build a fancy "rich client" application, like Gmail, so we'll be doing things a bit differently. Instead of reloading the page every time the user clicks a button, we'll use JavaScript to update the page. This will make the app feel much faster and fancier. However, we'll need to know a bit of jQuery first (technically, you don't need jQuery to do it, but it makes it about a hundred times easier than writing plain JavaScript for browsers).
 
 Now do the jQuery track: http://www.codecademy.com/tracks/jquery
 
 And then some of the projects if you feel like it: http://www.codecademy.com/tracks/projects
 
 
-## Todo List, Phase 5
+## Todo List, Phase 6
 
 **Objective:** Create an HTML app to-do list that can do the same sort of stuff as our previous todo list, but building and updating the page dynamically on the client instead of on the server.
 
@@ -170,7 +208,7 @@ And then some of the projects if you feel like it: http://www.codecademy.com/tra
 * The done items should be crossed out and lighter grey
 
 **Technical hints:**
-* Start with the HTML and CSS from Phase 4. You won't need a server for this phase.
+* Start with the HTML and CSS from Phase 5. You won't need a server for this phase.
 * Add jQuery functions so that whenever a button is clicked, the HTML is updated as needed. Adding a new todo item should append it to the list of uncompleted todos, completing a todo should move it to the end of the completed list, uncompleting should move it to the end of the uncompleted list, and deleting should remove it.
 * http://w3schools.com/tags/, http://w3schools.com/cssref/, http://w3schools.com/jsref/, and http://docs.jquery.com/ are your friends.
 * The Chrome developer tools are awesome. Look up some tutorials on using them, or grab me and I can show you the ropes.
@@ -178,11 +216,11 @@ And then some of the projects if you feel like it: http://www.codecademy.com/tra
 Okay, so now we have a fancy-dancy UI. But we lost the whole server interaction part, which was kind of the whole point!!
 
 
-## Todo List, Phase 6
+## Todo List, Phase 7
 
 Now it's time to hook your fancy new client UI up to your Node.js todo list HTTP server!
 
-**Objective:** Combine "Todo List, Phase 3" and "Todo List, Phase 5" to have the HTTP server storing the TODO items for you. You won't need the code from Phase 4.
+**Objective:** Combine "Todo List, Phase 3" and "Todo List, Phase 6" to have the HTTP server storing the TODO items for you. You won't need the code from Phase 4 or Phase 5.
 
 **Requirements:**
 * Should be able to add, complete, uncomplete, and delete todo items and have the changes updated the server.
@@ -194,7 +232,7 @@ Now it's time to hook your fancy new client UI up to your Node.js todo list HTTP
 * Take a look at the network tab in Chrome dev tools to see what's going on.
 
 
-## Todo List, Phase 7
+## Todo List, Phase 8
 
 Buuut what I really want is a multi-user todo list! And I want it to be speedy!
 
