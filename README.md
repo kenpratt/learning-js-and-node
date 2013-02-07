@@ -9,9 +9,11 @@
 8. CoffeeScript -- by this time, should see the advantages and have a good enough mental model of JS to get it right away
 9. Git! (and maybe more terminal tools)
 
+
 # Todo List
 
-This currently covers steps 2 to 5. Probably we'll do the rest in it too.
+We'll go through a bunch of phases, building a todo list and progressively adding more pieces of technology to it.
+
 
 ## Todo List, Phase 1
 
