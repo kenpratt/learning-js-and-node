@@ -121,7 +121,7 @@ So go through the CodeAcademy Web track: http://www.codecademy.com/tracks/web. T
 
 ## Todo List, Phase 4
 
-*Important:* Make a copy of your todo list from Phase 3, as you'll need it later for Phase 6. Phase 4 is kind of on off-shoot (you'll see what I mean).
+*Important:* Make a copy of your todo list from Phase 3, as you'll need it later for Phase 7. Phase 4 is kind of on off-shoot (you'll see what I mean).
 
 **Objective:** Create a todo list website! Your
 
@@ -196,6 +196,46 @@ And then some of the projects if you feel like it: http://www.codecademy.com/tra
 
 ## Todo List, Phase 6
 
+Okay so really this is just a super tiny iteration on Phase 5. I want to introduce you to Underscore, which is a super handy library that you can use for both client and server side JavaScript coding. See here: http://underscorejs.org/.
+
+To install it,
+
+```
+npm install underscore
+```
+
+To use it server side:
+
+```
+var _ = require("underscore");
+
+var someNumbers = _.range(1, 21);
+var isEven = function(x) { return x % 2 === 0 };
+
+var someEvenNumbers = _.filter(someNumbers, isEven);
+_.each(someEvenNumbers, function(x) { console.log("an even number", x); });
+
+var someOddNumbers = _.reject(someNumbers, isEven);
+_.each(someOddNumbers, function(x) { console.log("an odd number", x); });
+
+var someSquares = _.map(someNumbers, function(x) { return x * x; });
+_.each(someSquares, function(x) { console.log("a square", x); });
+```
+
+Note: The node console uses `_` to hold the result of the last operation, so if you want to play around with Underscore from the node console, do `var und = require("underscore");` instead, and change your examples to use that instead of `_`.
+
+To use it on the client side, you'll have to include the underscore.js file in your client files. You can copy it from the `node_modules/underscore/` directory, or download the latest version from http://underscorejs.org/. You'll need a script tag for it.
+
+**Objective:** Clean up your code using the Underscore Library
+
+**Requirements:**
+* Replace all of your `for` loops (and `hasOwnProperty` bits) with Underscore functions. Use `_.each`, `_.map`, `_.filter`, `_.reject`, `_.values`, `_.sortBy` and anything else that looks handy.
+
+I rarely use `for` loops in practice -- I always almost lean on the Underscore functions. It makes the code easier to write, read and understand.
+
+
+## Todo List, Phase 7
+
 **Objective:** Create an HTML app to-do list that can do the same sort of stuff as our previous todo list, but building and updating the page dynamically on the client instead of on the server.
 
 **Requirements:**
@@ -208,7 +248,7 @@ And then some of the projects if you feel like it: http://www.codecademy.com/tra
 * The done items should be crossed out and lighter grey
 
 **Technical hints:**
-* Start with the HTML and CSS from Phase 5. You won't need a server for this phase.
+* Start with the HTML and CSS from Phase 6. You won't need a server for this phase.
 * Add jQuery functions so that whenever a button is clicked, the HTML is updated as needed. Adding a new todo item should append it to the list of uncompleted todos, completing a todo should move it to the end of the completed list, uncompleting should move it to the end of the uncompleted list, and deleting should remove it.
 * http://w3schools.com/tags/, http://w3schools.com/cssref/, http://w3schools.com/jsref/, and http://docs.jquery.com/ are your friends.
 * The Chrome developer tools are awesome. Look up some tutorials on using them, or grab me and I can show you the ropes.
@@ -216,11 +256,11 @@ And then some of the projects if you feel like it: http://www.codecademy.com/tra
 Okay, so now we have a fancy-dancy UI. But we lost the whole server interaction part, which was kind of the whole point!!
 
 
-## Todo List, Phase 7
+## Todo List, Phase 8
 
 Now it's time to hook your fancy new client UI up to your Node.js todo list HTTP server!
 
-**Objective:** Combine "Todo List, Phase 3", "Todo List, Phase 5", and "Todo List, Phase 6" to have the HTTP server storing the TODO items for you. Use Express, like in Phase 5, but have it return JSON instead of HTML, like in Phase 3.
+**Objective:** Combine "Todo List, Phase 3", "Todo List, Phase 6", and "Todo List, Phase 7" to have the HTTP server storing the TODO items for you. Use Express, like in Phase 6, but have it return JSON instead of HTML, like in Phase 3.
 
 **Requirements:**
 * Should be able to add, complete, uncomplete, and delete todo items and have the changes updated the server.
@@ -232,7 +272,7 @@ Now it's time to hook your fancy new client UI up to your Node.js todo list HTTP
 * Take a look at the network tab in Chrome dev tools to see what's going on.
 
 
-## Todo List, Phase 8
+## Todo List, Phase 9
 
 Buuut what I really want is a multi-user todo list! And I want it to be speedy!
 
@@ -244,7 +284,7 @@ The problem with HTTP is that the client is in the driver seat, and the server c
 * Should be able to have multiple browser tabs doing stuff in the todo list and changes showing up in all the tabs simultaneously.
 
 **Technical hints:**
-* Keep your client code from Phase 7 and your todos.js from Phase 7, but throw out the web server code and start from scratch.
+* Keep your client code and your todos.js from Phase 8, but throw out the web server code and start from scratch.
 * Create a new server that uses web sockets. Start with https://github.com/kenpratt/learning-js-and-node/blob/master/example_web_socket_server/.
 * Take a look at the network tab in Chrome dev tools to see what's going on.
 * You'll probably want to have all your messages be objects with `type` set to something. For example `{type: "todos", todos: [...]}`, or `{type: "complete_todo", id: 37}`.
@@ -258,14 +298,14 @@ The problem with HTTP is that the client is in the driver seat, and the server c
 Okay, so you may have noticed by now, in can be a bit difficult to keep the various parts of the UI in sync when things change. The todo app is pretty small, so this probably wasn't overly hard, but on a big project where things are shown in many places in the UI, it can get buggy. Knockout is a framework for "wiring up" UIs to JavaScript objects in such a way that you don't have to write much code to keep then in sync. Go through the tutorials at http://learn.knockoutjs.com/ to learn the basics.
 
 
-## Todo List, Phase 9
+## Todo List, Phase 10
 
 Now that you're familiar with Knockout, we'll revise the todo list client to use it.
 
 **Objective:** Rewrite the UI code for the todo list using Knockout. You should need very few jQuery functions.
 
 **Requirements:**
-* Same as Phase 8
+* Same as Phase 9
 
 **Technical hints:**
 * You'll probably want two Observable Arrays -- one for incomplete tasks, and one for completed tasks. Each task will be an object, but it's properties should be Observables.
@@ -278,7 +318,7 @@ Okay, by now you've realized that JavaScript can be a bit of a pain sometimes. S
 Check it out at http://coffeescript.org/, and try it out in the "Try CoffeeScript" section. In particular, check out http://coffeescript.org/#fat_arrow
 
 
-## Todo List, Phase 10
+## Todo List, Phase 11
 
 Rewrite your todo list in CoffeeScript (both client and server). You can probably just use http://js2coffee.org/ and then clean up the output, but take a look at the differences, and clean up some places by switching "bind" to fat arrows, etc.
 
