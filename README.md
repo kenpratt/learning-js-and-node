@@ -187,15 +187,6 @@ POST /todos/37/delete (delete a todo item)
 Alright, now compare your code to Phase 4. It should be much shorter and more understandable. Libraries often exist to help out with things you want to do, so you don't have to create quite so much from scratch. If only I'd told you about this one in the first place ;)
 
 
-## We want rich clients!
-
-Okay, so now you have an "old school" web application where there isn't any JavaScript on the client side, and the server is generating all the pages. This is how most of the web works (Wikipdeia, blogs, news sites, Rails applications like Leanpub, etc). However, we want to build a fancy "rich client" application, like Gmail, so we'll be doing things a bit differently. Instead of reloading the page every time the user clicks a button, we'll use JavaScript to update the page. This will make the app feel much faster and fancier. However, we'll need to know a bit of jQuery first (technically, you don't need jQuery to do it, but it makes it about a hundred times easier than writing plain JavaScript for browsers).
-
-Now do the jQuery track: http://www.codecademy.com/tracks/jquery
-
-And then some of the projects if you feel like it: http://www.codecademy.com/tracks/projects
-
-
 ## Todo List, Phase 6
 
 Okay so really this is just a super tiny iteration on Phase 5. I want to introduce you to Underscore, which is a super handy library that you can use for both client and server side JavaScript coding. See here: http://underscorejs.org/.
@@ -234,6 +225,15 @@ To use it on the client side, you'll have to include the underscore.js file in y
 * Replace all of your `for` loops (and `hasOwnProperty` bits) with Underscore functions. Use `_.each`, `_.map`, `_.filter`, `_.reject`, `_.values`, `_.sortBy` and anything else that looks handy.
 
 I rarely use `for` loops in practice -- I always almost lean on the Underscore functions. It makes the code easier to write, read and understand.
+
+
+## We want rich clients!
+
+Okay, so now you have an "old school" web application where there isn't any JavaScript on the client side, and the server is generating all the pages. This is how most of the web works (Wikipdeia, blogs, news sites, Rails applications like Leanpub, etc). However, we want to build a fancy "rich client" application, like Gmail, so we'll be doing things a bit differently. Instead of reloading the page every time the user clicks a button, we'll use JavaScript to update the page. This will make the app feel much faster and fancier. However, we'll need to know a bit of jQuery first (technically, you don't need jQuery to do it, but it makes it about a hundred times easier than writing plain JavaScript for browsers).
+
+Now do the jQuery track: http://www.codecademy.com/tracks/jquery
+
+And then some of the projects if you feel like it: http://www.codecademy.com/tracks/projects
 
 
 ## Todo List, Phase 7
