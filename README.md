@@ -41,7 +41,7 @@ We'll go through a bunch of phases, building a todo list and progressively addin
 
 ## Todo List, Phase 2
 
-Oh no, my to-dos keep getting deleted every time we run the program! That's not very useful :(
+Oh no, my to-dos keep getting deleted every time I run the program! That's not very useful :(
 
 **Objective:** Enhance to-do list to actually save the items between runs of the program.
 
@@ -69,7 +69,7 @@ If you'd like more practice before continuing, try out these two problems:
 
 ## Reading time!
 
-Start going through "The Node Beginner Book" as you work through "Todo List, Phase 3". You don't have to finish the whole thing before, just start it, and then start the problem, and read as far as makes sense.
+Start going through "The Node Beginner Book" as you work through Phase 3. You don't have to finish the whole thing before, just start it, and then start the problem, and read as far as makes sense.
 
 
 ## Todo List, Phase 3
@@ -177,12 +177,12 @@ POST /todos/37/delete (delete a todo item)
 ```
 
 **Technical hints:**
-* Use your todos.js from Phase 4, but start from scratch on the web server. To get started, `npm install express`, and try out https://github.com/visionmedia/express/blob/master/examples/hello-world/index.js, replacing `require('../../')` with `require('express')`.
-* For GET requests, you can use `app.get('/', function(req, res) { res.send('Hello World'); });`. (http://expressjs.com/api.html#app.VERB)
-* For POST requests, you can use `app.post('/', function(req, res) { res.send(""); });`. (http://expressjs.com/api.html#app.VERB)
-* To get the POST parameters, you can add `app.use(express.bodyParser());` and then they will be available as an object in `req.body`. (http://expressjs.com/api.html#req.body)
-* To send a redirect, you can use `res.redirect('/foo/bar');`. (http://expressjs.com/api.html#res.redirect)
-* To serve up `stylesheet.css` or any other "static" files, you can use `app.use(express.static('public'))`. You'll need to move any files you want served into a sub-directory. (http://expressjs.com/api.html#directory)
+* Use your todos.js from Phase 4, but start from scratch on the web server. To get started, `npm install express`, and try out https://github.com/visionmedia/express/blob/master/examples/hello-world/index.js, replacing `require('../../')` with `require('express')`
+* For GET requests, you can use `app.get('/', function(req, res) { res.send('Hello World'); });` http://expressjs.com/api.html#app.VERB
+* For POST requests, you can use `app.post('/', function(req, res) { res.send(""); });` http://expressjs.com/api.html#app.VERB
+* To get the POST parameters, you can add `app.use(express.bodyParser());` and then they will be available as an object in `req.body` http://expressjs.com/api.html#req.body
+* To send a redirect, you can use `res.redirect('/foo/bar');` http://expressjs.com/api.html#res.redirect
+* To serve up `stylesheet.css` or any other "static" files, you can use `app.use(express.static('public'))`. You'll need to move any files you want served into a sub-directory http://expressjs.com/api.html#directory
 
 Alright, now compare your code to Phase 4. It should be much shorter and more understandable. Libraries often exist to help out with things you want to do, so you don't have to create quite so much from scratch. If only I'd told you about this one in the first place ;)
 
@@ -262,7 +262,7 @@ Okay, so now we have a fancy-dancy UI. But we lost the whole server interaction 
 
 Now it's time to hook your fancy new client UI up to your Node.js todo list HTTP server!
 
-**Objective:** Combine "Todo List, Phase 3", "Todo List, Phase 6", and "Todo List, Phase 7" to have the HTTP server storing the TODO items for you. Use Express, like in Phase 6, but have it return JSON instead of HTML, like in Phase 3.
+**Objective:** Combine Phase 3, Phase 6, and Phase 7 to have the HTTP server storing the TODO items for you. Use Express, like in Phase 6, but have it return JSON instead of HTML, like in Phase 3.
 
 **Requirements:**
 * Should be able to add, complete, uncomplete, and delete todo items and have the changes updated the server.
