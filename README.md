@@ -326,7 +326,7 @@ Now that you're familiar with Knockout, we'll revise the todo list client to use
 
 Okay, by now you've realized that JavaScript can be a bit of a pain sometimes. Scope bugs aplenty, and just plain old verbose. CoffeeScript is a "little language that compiles into JavaScript".
 
-Check it out at http://coffeescript.org/, and try it out in the "Try CoffeeScript" section. In particular, check out http://coffeescript.org/#fat_arrow
+Check it out at http://coffeescript.org/, and try it out in the "Try CoffeeScript" section. In particular, check out http://coffeescript.org/#fat_arrow. There are also some video tutorials and exercises available at http://coffeescript.codeschool.com/.
 
 
 ## Todo List, Phase 11
