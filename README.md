@@ -15,6 +15,15 @@
 We'll go through a bunch of phases, building a todo list and progressively adding more pieces of technology to it.
 
 
+## First things first
+
+So before we do anything, you'll need to know the basics. Go through the JavaScript track on CodeAcademy (http://www.codecademy.com/tracks/javascript) and complete all the exercises.
+
+A good reference site: http://www.w3schools.com/jsref/
+
+Next, install node.js (http://nodejs.org/) and get it running.
+
+
 ## Todo List, Phase 1
 
 **Objective:** Make a simple to-do list that you can use to keep track of all the things that need doing!
