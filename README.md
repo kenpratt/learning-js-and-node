@@ -348,8 +348,8 @@ Rewrite your todo list in CoffeeScript (both client and server). You can probabl
 
 **Technical hints:**
 * Use everything you've learned so far, including websockets to talk to the server, HTML & CSS to show the board and pieces, and jQuery to handle clicking around on the board
-* Each square on the board will be an absolutely-positioned div, and should use HTML 5 "data" attributes to store it's position (data-x, data-y).
-* Each piece will be an absolutely-positioned div.
+* You'll probably want to create an ObservableArray of the board tiles, and then render them out as divs, and use CSS "float" to get them arranged properly.
+* The CSS selector `:nth-child(odd)` could help you color the board tiles.
 * Use jQuery UI draggable and droppable to provide drag & drop support for the pieces on the board. Pieces will be draggable, board squares will be droppable. When a piece is hovered over a board square and/or dropped on a board square, you should validate that it is a legal move.
 * When you drop a piece on a square, and the move is valid, send a message to the server requesting that move. The server should double-check that the move is valid (you should create a function to check valid moves that you use on both the client and server), and then if valid, record the move and broadcast the change to the clients.
 * When a client receives a move, it should update the position of the affected piece(s).
